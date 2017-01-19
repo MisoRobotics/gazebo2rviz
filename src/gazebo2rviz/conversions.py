@@ -1,7 +1,7 @@
 from __future__ import print_function
 
 import copy
-
+from geometry_msgs.msg import Vector3
 import rospy
 from rospkg import RosPack, ResourceNotFound
 from visualization_msgs.msg import Marker
@@ -40,11 +40,13 @@ def link2marker_msg(link, full_linkname, use_collision = False, lifetime = rospy
         return None
 
     marker_msg = copy.deepcopy(protoMarkerMsg)
-    marker_msg.header.frame_id = pysdf.sdf2tfname(full_linkname)
+    marker_msg.header.frame_id = 'world' # pysdf.sdf2tfname(full_linkname)
     marker_msg.header.stamp = rospy.get_rostime()
     marker_msg.lifetime = lifetime
     marker_msg.ns = pysdf.sdf2tfname(full_linkname + "::" + linkpart.name)
     marker_msg.pose = pysdf.homogeneous2pose_msg(linkpart.pose)
+    marker_msg.color.a = 1
+    marker_msg.scale = Vector3(x=1, y=1, z=1)
 
     if linkpart.geometry_type == 'mesh':
       marker_msg.type = Marker.MESH_RESOURCE

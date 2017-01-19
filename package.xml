@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<package>
+<package format="2">
   <name>gazebo2rviz</name>
   <version>0.1.0</version>
   <description>This package contains nodes to automatically import all entities simulated in a ROS-enabled Gazebo instance into rviz through the TF and Marker plugin.</description>
@@ -11,9 +11,9 @@
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>rospy</build_depend>
   <build_depend>pysdf</build_depend>
-  <run_depend>pysdf</run_depend>
-  <run_depend>rospy</run_depend>
-  <run_depend>python-rospkg</run_depend>
+  <exec_depend>pysdf</exec_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>python-rospkg</exec_depend>
 
   <export>
   </export>
